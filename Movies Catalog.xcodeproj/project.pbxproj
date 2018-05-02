@@ -17,6 +17,9 @@
 		F8214EC5209997630065D5F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8214EC3209997630065D5F5 /* LaunchScreen.storyboard */; };
 		F8214ED0209997640065D5F5 /* Movies_CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8214ECF209997640065D5F5 /* Movies_CatalogTests.swift */; };
 		F8214EDB209997640065D5F5 /* Movies_CatalogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8214EDA209997640065D5F5 /* Movies_CatalogUITests.swift */; };
+		F8214EE920999DF50065D5F5 /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8214EE820999DF50065D5F5 /* TMDB.swift */; };
+		F8214EED2099BFBB0065D5F5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8214EEC2099BFBB0065D5F5 /* Movie.swift */; };
+		F8214EEF2099CB170065D5F5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8214EEE2099CB170065D5F5 /* Client.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		F8214ED6209997640065D5F5 /* Movies CatalogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movies CatalogUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8214EDA209997640065D5F5 /* Movies_CatalogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies_CatalogUITests.swift; sourceTree = "<group>"; };
 		F8214EDC209997640065D5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8214EE820999DF50065D5F5 /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
+		F8214EEC2099BFBB0065D5F5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		F8214EEE2099CB170065D5F5 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,12 +143,15 @@
 		F8214EB92099975B0065D5F5 /* Movies Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				F8214EEB2099BFA70065D5F5 /* Models */,
 				F8214EBA2099975B0065D5F5 /* AppDelegate.swift */,
 				F8214EBC2099975B0065D5F5 /* ViewController.swift */,
 				F8214EBE2099975B0065D5F5 /* Main.storyboard */,
 				F8214EC1209997630065D5F5 /* Assets.xcassets */,
 				F8214EC3209997630065D5F5 /* LaunchScreen.storyboard */,
 				F8214EC6209997630065D5F5 /* Info.plist */,
+				F8214EE820999DF50065D5F5 /* TMDB.swift */,
+				F8214EEE2099CB170065D5F5 /* Client.swift */,
 			);
 			path = "Movies Catalog";
 			sourceTree = "<group>";
@@ -163,6 +172,14 @@
 				F8214EDC209997640065D5F5 /* Info.plist */,
 			);
 			path = "Movies CatalogUITests";
+			sourceTree = "<group>";
+		};
+		F8214EEB2099BFA70065D5F5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F8214EEC2099BFBB0065D5F5 /* Movie.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +397,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8214EBD2099975B0065D5F5 /* ViewController.swift in Sources */,
+				F8214EE920999DF50065D5F5 /* TMDB.swift in Sources */,
+				F8214EED2099BFBB0065D5F5 /* Movie.swift in Sources */,
+				F8214EEF2099CB170065D5F5 /* Client.swift in Sources */,
 				F8214EBB2099975B0065D5F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,7 +577,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VJF35UZSF;
 				INFOPLIST_FILE = "Movies Catalog/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thejeraldo.Movies-Catalog";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -573,7 +596,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VJF35UZSF;
 				INFOPLIST_FILE = "Movies Catalog/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thejeraldo.Movies-Catalog";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -590,7 +616,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VJF35UZSF;
 				INFOPLIST_FILE = "Movies CatalogTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thejeraldo.Movies-CatalogTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -608,7 +638,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VJF35UZSF;
 				INFOPLIST_FILE = "Movies CatalogTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thejeraldo.Movies-CatalogTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -625,7 +659,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VJF35UZSF;
 				INFOPLIST_FILE = "Movies CatalogUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thejeraldo.Movies-CatalogUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -642,7 +680,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6VJF35UZSF;
 				INFOPLIST_FILE = "Movies CatalogUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thejeraldo.Movies-CatalogUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
