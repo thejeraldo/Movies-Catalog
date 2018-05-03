@@ -106,13 +106,6 @@ class CatalogTableViewController: UITableViewController, CategoryTableViewCellDe
   
   // MARK: - UITableViewDelegate
   
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let vc: MovieViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieViewController") as! MovieViewController
-    
-    let nav = UINavigationController(rootViewController: vc)
-    self.splitViewController?.showDetailViewController(nav, sender: self)
-  }
-  
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 166
   }
@@ -126,6 +119,25 @@ class CatalogTableViewController: UITableViewController, CategoryTableViewCellDe
     let nav = UINavigationController(rootViewController: vc)
     self.splitViewController?.showDetailViewController(nav, sender: self)
   }
+  
+  func loadNext(_ movieList: MovieList) {
+    let currentList = self.movies.first(where: {$0.listType == movieList.listType})
+    let index = self.movies.index(of: currentList!)
+    let cell: CategoryTableViewCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: index!)) as! CategoryTableViewCell
+    
+    self.loadMovies(movieList.listType!, page: movieList.page + 1, success: { (newList) in
+      currentList?.page += 1
+      for movie in (newList?.movies!)! {
+        currentList?.movies?.append(movie)
+        cell.collectionView.insertItems(at: [ IndexPath(row: cell.collectionView.numberOfItems(inSection: 0), section: 0) ])
+      }
+      cell.isLoading = false
+      
+    }) { (error) in
+      SVProgressHUD.showError(withStatus: "Something went wrong.")
+      cell.isLoading = false
+    }
+  }
 }
 
 // MARK: - UISplitViewControllerDelegate
@@ -134,7 +146,7 @@ extension CatalogTableViewController: UISplitViewControllerDelegate {
   func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
     guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
     guard let topAsDetailController = secondaryAsNavController.topViewController as? MovieTableViewController else { return false }
-    if topAsDetailController.movie == nil {
+    if topAsDetailController.movieViewModel == nil {
       return true
     }
     return false

@@ -10,6 +10,7 @@ import UIKit
 
 protocol CategoryTableViewCellDelegate: class {
   func didSelectMovie(movie: Movie)
+  func loadNext(_ movieList: MovieList)
 }
 
 class CategoryTableViewCell: UITableViewCell {
@@ -17,6 +18,7 @@ class CategoryTableViewCell: UITableViewCell {
   weak var delegate: CategoryTableViewCellDelegate?
   
   var movieList: MovieList?
+  var isLoading: Bool = false
   let layout: UICollectionViewFlowLayout = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
@@ -45,7 +47,6 @@ class CategoryTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    
     // Configure the view for the selected state
   }
 }
@@ -72,8 +73,13 @@ extension CategoryTableViewCell: UICollectionViewDataSource {
 
 extension CategoryTableViewCell: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    if indexPath.row == 19 {
-      print("reloadData")
+    let count = self.movieList?.movies?.count
+    let last = count! - 1
+    if indexPath.row == last && !isLoading {
+      let next = (count! / 20) + 1
+      print("Load next page: \(next) \(movieList?.listType?.title() ?? "")")
+      isLoading = true
+      self.delegate?.loadNext(self.movieList!)
     }
   }
   

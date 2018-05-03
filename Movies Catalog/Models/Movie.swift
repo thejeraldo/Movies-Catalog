@@ -42,7 +42,7 @@ class Movie: Codable, Equatable {
 
 // MARK: - Movie List
 
-struct MovieList: Codable, Equatable {
+class MovieList: Codable, Equatable {
   var listType: MovieListType?
   var page: Int
   var totalResults: Int
