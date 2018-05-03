@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MovieViewController.swift
 //  Movies Catalog
 //
 //  Created by Jeraldo Abille on 5/2/18.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class MovieViewController: UIViewController {
+  
+  var movie: Movie?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    if let _ = self.movie {
+      title = self.movie?.title
+    }
   }
-
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
-
-
 }
-

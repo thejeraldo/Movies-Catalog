@@ -8,7 +8,9 @@
 
 import Foundation
 
-class Movie: Codable {
+// MARK: - Movie
+
+class Movie: Codable, Equatable {
   var movieID: Int
   var title: String
   var posterPath: String?
@@ -32,9 +34,16 @@ class Movie: Codable {
     case voteAverage = "vote_average"
     case releaseDate = "release_date"
   }
+  
+  static func == (lhs: Movie, rhs: Movie) -> Bool {
+    return lhs.movieID == rhs.movieID
+  }
 }
 
-struct MovieList: Codable {
+// MARK: - Movie List
+
+struct MovieList: Codable, Equatable {
+  var listType: MovieListType?
   var page: Int
   var totalResults: Int
   var totalPages: Int
@@ -46,6 +55,14 @@ struct MovieList: Codable {
     case totalPages = "total_pages"
     case movies = "results"
   }
+  
+  static func == (lhs: MovieList, rhs: MovieList) -> Bool {
+    return
+      lhs.listType == rhs.listType &&
+      lhs.page == rhs.page &&
+      lhs.totalPages == rhs.totalPages &&
+      lhs.totalResults == rhs.totalResults
+  }
 }
 
 // MARK: - Enums
@@ -54,6 +71,17 @@ enum MovieListType {
   case mostPopular
   case topRated
   case highestGrossing
+  
+  func title() -> String {
+    switch self {
+    case .mostPopular:
+      return "Most Popular"
+    case .topRated:
+      return "Top Rated"
+    case .highestGrossing:
+      return "Highest Grossing"
+    }
+  }
   
   func paramsForList(page: Int = 1) -> [String: Any] {
     var params = [
@@ -82,6 +110,8 @@ extension Movie {
     if let url = URL(string: TMDB.baseURL)?.appendingPathComponent(TMDB.discoverMovie) {
       let params = listType.paramsForList(page: page)
       Client.request(url: url, method: .get, params: params, responseType: MovieList.self, success: { (movieList) in
+        var movieList = movieList
+        movieList.listType = listType
         success(movieList)
       }, failure: { (error) in
         failure(error)

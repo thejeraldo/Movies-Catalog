@@ -18,4 +18,8 @@ struct TMDB {
   // MARK: - Endpoints
   
   static let discoverMovie = "discover/movie"
+  
+  // MARK: - Images
+  
+  static let imageURL = "https://image.tmdb.org/t/p/w500"
 }
