@@ -13,7 +13,7 @@ class CatalogSplitViewController: UISplitViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = UIColor.darkGray
+    view.backgroundColor = UIColor(named: "dark")
     preferredDisplayMode = .allVisible
   }
   

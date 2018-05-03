@@ -37,6 +37,7 @@ class CatalogTableViewController: UITableViewController, CategoryTableViewCellDe
   }
   
   func setupTableView() {
+    tableView.backgroundColor = UIColor(named: "dark")
     tableView.tableFooterView = UIView()
   }
   

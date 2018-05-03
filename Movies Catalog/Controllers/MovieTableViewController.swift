@@ -29,6 +29,7 @@ class MovieTableViewController: UITableViewController {
     
     customizeViews()
     
+    tableView.backgroundColor = UIColor(named: "dark")
     tableView.rowHeight = self.tableView.frame.width / (16/9)
     tableView.estimatedRowHeight = self.tableView.frame.width / (16/9)
     
@@ -54,6 +55,8 @@ class MovieTableViewController: UITableViewController {
     applyShadowToLabel(self.titleLabel)
     applyShadowToLabel(self.releaseDateLabel)
     applyShadowToLabel(self.voteAverageLabel)
+    self.overviewLabel.textColor = UIColor.white
+    self.overviewLabel.backgroundColor = UIColor(named: "dark")
   }
   
   func applyShadowToLabel(_ label: UILabel) {

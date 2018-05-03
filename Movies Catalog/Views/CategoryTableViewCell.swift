@@ -37,6 +37,7 @@ class CategoryTableViewCell: UITableViewCell {
       collectionView.delegate = self as UICollectionViewDelegate
       collectionView.showsHorizontalScrollIndicator = false
       collectionView.collectionViewLayout = layout
+      collectionView.backgroundColor = UIColor(named: "dark")
     }
   }
   
