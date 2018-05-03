@@ -214,6 +214,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="p5n-xB-rqz" secondAttribute="trailing" constant="8" id="zHR-wd-3BK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="dark"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="f3O-Uo-Pmh">
                                         <rect key="frame" x="0.0" y="210" width="375" height="44"/>
