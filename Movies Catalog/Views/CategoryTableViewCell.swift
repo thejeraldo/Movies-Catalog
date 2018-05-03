@@ -17,7 +17,7 @@ class CategoryTableViewCell: UITableViewCell {
   
   weak var delegate: CategoryTableViewCellDelegate?
   
-  var movieList: MovieList?
+  private var movieList: MovieList?
   var isLoading: Bool = false
   let layout: UICollectionViewFlowLayout = {
     let layout = UICollectionViewFlowLayout()
@@ -49,6 +49,11 @@ class CategoryTableViewCell: UITableViewCell {
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     // Configure the view for the selected state
+  }
+  
+  func configureWithMovieList(_ movieList: MovieList) {
+    self.movieList = movieList
+    self.collectionView.reloadData()
   }
 }
 

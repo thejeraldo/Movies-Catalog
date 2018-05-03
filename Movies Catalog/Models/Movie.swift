@@ -71,6 +71,9 @@ enum MovieListType {
   case mostPopular
   case topRated
   case highestGrossing
+  case topComedy
+  case topHorror
+  case topRomance
   
   func title() -> String {
     switch self {
@@ -80,6 +83,12 @@ enum MovieListType {
       return "Top Rated"
     case .highestGrossing:
       return "Highest Grossing"
+    case .topComedy:
+      return "Top Comedy"
+    case .topHorror:
+      return "Top Horror"
+    case .topRomance:
+      return "Top Romance"
     }
   }
   
@@ -95,6 +104,15 @@ enum MovieListType {
       params["sort_by"] = "vote_count.desc"
     case .highestGrossing:
       params["sort_by"] = "revenue.desc"
+    case .topComedy:
+      params["with_genres"] = "35"
+      params["sort_by"] = "vote_count.desc"
+    case .topHorror:
+      params["with_genres"] = "27"
+      params["sort_by"] = "vote_count.desc"
+    case .topRomance:
+      params["with_genres"] = "10749"
+      params["sort_by"] = "vote_count.desc"
     }
     return params
   }
@@ -110,7 +128,7 @@ extension Movie {
     if let url = URL(string: TMDB.baseURL)?.appendingPathComponent(TMDB.discoverMovie) {
       let params = listType.paramsForList(page: page)
       Client.request(url: url, method: .get, params: params, responseType: MovieList.self, success: { (movieList) in
-        var movieList = movieList
+        let movieList = movieList
         movieList.listType = listType
         success(movieList)
       }, failure: { (error) in

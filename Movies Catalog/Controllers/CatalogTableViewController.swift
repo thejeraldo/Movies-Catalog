@@ -65,6 +65,37 @@ class CatalogTableViewController: UITableViewController, CategoryTableViewCellDe
                 self?.movies.append(highestGrossingMovies!)
                 let index = self?.movies.index(of: highestGrossingMovies!)
                 self?.tableView.insertSections(IndexSet(index!...index!), with: .fade)
+                
+                self?.loadMovies(.topComedy, page: 1, success: { (topComedies) in
+                  if let _ = topComedies {
+                    self?.movies.append(topComedies!)
+                    let index = self?.movies.index(of: topComedies!)
+                    self?.tableView.insertSections(IndexSet(index!...index!), with: .fade)
+                    
+                    self?.loadMovies(.topHorror, page: 1, success: { (topHorror) in
+                      if let _ = topHorror {
+                        self?.movies.append(topHorror!)
+                        let index = self?.movies.index(of: topHorror!)
+                        self?.tableView.insertSections(IndexSet(index!...index!), with: .fade)
+                        
+                        self?.loadMovies(.topRomance, page: 1, success: { (topRomance) in
+                          if let _ = topRomance {
+                            self?.movies.append(topRomance!)
+                            let index = self?.movies.index(of: topRomance!)
+                            self?.tableView.insertSections(IndexSet(index!...index!), with: .fade)
+                            
+                          }
+                        }, failure: { (error) in
+                          SVProgressHUD.showError(withStatus: "Something went wrong.")
+                        })
+                      }
+                    }, failure: { (error) in
+                      SVProgressHUD.showError(withStatus: "Something went wrong.")
+                    })
+                  }
+                }, failure: { (error) in
+                  SVProgressHUD.showError(withStatus: "Something went wrong.")
+                })
               }
               
             }, failure: { (error) in
@@ -98,7 +129,7 @@ class CatalogTableViewController: UITableViewController, CategoryTableViewCellDe
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: CategoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTableViewCell
     let movieList = self.movies[indexPath.section]
-    cell.movieList = movieList
+    cell.configureWithMovieList(movieList)
     if cell.delegate == nil {
       cell.delegate = self
     }
