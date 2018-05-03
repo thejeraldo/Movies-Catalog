@@ -129,6 +129,7 @@ class CatalogTableViewController: UITableViewController, CategoryTableViewCellDe
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: CategoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTableViewCell
     let movieList = self.movies[indexPath.section]
+    cell.backgroundColor = UIColor(named: "dark")
     cell.configureWithMovieList(movieList)
     if cell.delegate == nil {
       cell.delegate = self
