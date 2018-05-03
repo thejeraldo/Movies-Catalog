@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CatalogSplitViewController.swift
 //  Movies Catalog
 //
 //  Created by Jeraldo Abille on 5/2/18.
@@ -8,18 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class CatalogSplitViewController: UISplitViewController {
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    view.backgroundColor = UIColor(named: "dark")
+    preferredDisplayMode = .allVisible
   }
-
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
-
-
 }
-
