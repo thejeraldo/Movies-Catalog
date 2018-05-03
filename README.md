@@ -1,4 +1,4 @@
-# SIVVI Movie Catalog Coding Assignemnt
+# Movie Catalog Coding Assignment for SIVVI
 
 Implementation by Jerald Abille (https://github.com/thejeraldo)
 
@@ -17,3 +17,5 @@ Implementation by Jerald Abille (https://github.com/thejeraldo)
 ## TODO
 - Improve error handling.
 - Maybe use PromiseKit for handling chaining of requests.
+- Document classes and methods.
+
