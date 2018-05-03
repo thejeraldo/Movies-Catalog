@@ -20,7 +20,6 @@
 		F8214EED2099BFBB0065D5F5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8214EEC2099BFBB0065D5F5 /* Movie.swift */; };
 		F8214EEF2099CB170065D5F5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8214EEE2099CB170065D5F5 /* Client.swift */; };
 		F8BA59E72099FC86000579FC /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BA59E62099FC86000579FC /* CatalogTableViewController.swift */; };
-		F8BA59E92099FCCD000579FC /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BA59E82099FCCD000579FC /* MovieViewController.swift */; };
 		F8BA59EB2099FE9F000579FC /* CatalogSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BA59EA2099FE9F000579FC /* CatalogSplitViewController.swift */; };
 		F8BA59EE209A15C6000579FC /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BA59ED209A15C6000579FC /* CategoryTableViewCell.swift */; };
 		F8BA59F0209A1823000579FC /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BA59EF209A1823000579FC /* MovieCollectionViewCell.swift */; };
@@ -71,7 +70,6 @@
 		F8214EEC2099BFBB0065D5F5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F8214EEE2099CB170065D5F5 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		F8BA59E62099FC86000579FC /* CatalogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
-		F8BA59E82099FCCD000579FC /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		F8BA59EA2099FE9F000579FC /* CatalogSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSplitViewController.swift; sourceTree = "<group>"; };
 		F8BA59ED209A15C6000579FC /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		F8BA59EF209A1823000579FC /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				F8BA59E62099FC86000579FC /* CatalogTableViewController.swift */,
-				F8BA59E82099FCCD000579FC /* MovieViewController.swift */,
 				F8BA59EA2099FE9F000579FC /* CatalogSplitViewController.swift */,
 				F8BA5A1F209AEFC6000579FC /* MovieTableViewController.swift */,
 			);
@@ -447,7 +444,6 @@
 				F8214EEF2099CB170065D5F5 /* Client.swift in Sources */,
 				F8214EBB2099975B0065D5F5 /* AppDelegate.swift in Sources */,
 				F8BA59F0209A1823000579FC /* MovieCollectionViewCell.swift in Sources */,
-				F8BA59E92099FCCD000579FC /* MovieViewController.swift in Sources */,
 				F8BA59EE209A15C6000579FC /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
