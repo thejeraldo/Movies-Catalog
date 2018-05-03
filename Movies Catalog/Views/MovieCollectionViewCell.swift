@@ -16,7 +16,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
   
   func setupWithMovie(_ movie: Movie) {
     self.movie = movie
-    if let posterURL = URL(string: TMDB.imageURL)?.appendingPathComponent(movie.posterPath!) {
+    let movieViewModel = MovieViewModel(movie: movie)
+    if let posterURL = movieViewModel.posterURL {
       posterImageView.af_setImage(withURL: posterURL, placeholderImage: #imageLiteral(resourceName: "placeholder"))
     }
   }

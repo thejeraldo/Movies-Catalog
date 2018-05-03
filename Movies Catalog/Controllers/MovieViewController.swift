@@ -11,12 +11,19 @@ import UIKit
 class MovieViewController: UIViewController {
   
   var movie: Movie?
+  var movieViewModel: MovieViewModel?
   
+  @IBOutlet weak var backdropImageView: UIImageView!
+  @IBOutlet weak var posterImageView: UIImageView!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var overviewLabel: UILabel!
+  @IBOutlet weak var releaseDateLabel: UILabel!
+  @IBOutlet weak var voteAverageLabel: UILabel!
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    if let _ = self.movie {
-      title = self.movie?.title
-    }
+    
+    title = movieViewModel?.titleString
   }
   
   override func didReceiveMemoryWarning() {

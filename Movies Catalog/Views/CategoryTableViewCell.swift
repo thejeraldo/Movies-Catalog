@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CategoryTableViewCellDelegate: class {
+  func didSelectMovie(movie: Movie)
+}
+
 class CategoryTableViewCell: UITableViewCell {
+  
+  weak var delegate: CategoryTableViewCellDelegate?
   
   var movieList: MovieList?
   let layout: UICollectionViewFlowLayout = {
@@ -72,6 +78,7 @@ extension CategoryTableViewCell: UICollectionViewDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    let movie = self.movieList?.movies![indexPath.row]
+    self.delegate?.didSelectMovie(movie: movie!)
   }
 }

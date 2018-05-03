@@ -40,6 +40,9 @@ class Movies_CatalogTests: XCTestCase {
     Movie.getMovieList(.topRated, page: 1, success: { (movieList) in
       if let movies = movieList?.movies {
         print(movies)
+        let movie = movies.first
+        let viewModel = MovieViewModel(movie: movie!)
+        print(viewModel)
       }
       exp.fulfill()
       XCTAssert(movieList?.movies != nil, "Movies must not be empty.")

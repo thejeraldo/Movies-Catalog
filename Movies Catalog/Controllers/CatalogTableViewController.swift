@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class CatalogTableViewController: UITableViewController {
+class CatalogTableViewController: UITableViewController, CategoryTableViewCellDelegate {
   
   var movies = [MovieList]()
   
@@ -98,6 +98,9 @@ class CatalogTableViewController: UITableViewController {
     let cell: CategoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTableViewCell
     let movieList = self.movies[indexPath.section]
     cell.movieList = movieList
+    if cell.delegate == nil {
+      cell.delegate = self
+    }
     return cell
   }
   
@@ -113,6 +116,16 @@ class CatalogTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 166
   }
+  
+  // MARK: -
+  
+  func didSelectMovie(movie: Movie) {
+    let vc: MovieTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieTableViewController") as! MovieTableViewController
+    let movieViewModel = MovieViewModel(movie: movie)
+    vc.movieViewModel = movieViewModel
+    let nav = UINavigationController(rootViewController: vc)
+    self.splitViewController?.showDetailViewController(nav, sender: self)
+  }
 }
 
 // MARK: - UISplitViewControllerDelegate
@@ -120,7 +133,7 @@ class CatalogTableViewController: UITableViewController {
 extension CatalogTableViewController: UISplitViewControllerDelegate {
   func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
     guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-    guard let topAsDetailController = secondaryAsNavController.topViewController as? MovieViewController else { return false }
+    guard let topAsDetailController = secondaryAsNavController.topViewController as? MovieTableViewController else { return false }
     if topAsDetailController.movie == nil {
       return true
     }

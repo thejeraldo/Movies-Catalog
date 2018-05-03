@@ -22,4 +22,5 @@ struct TMDB {
   // MARK: - Images
   
   static let imageURL = "https://image.tmdb.org/t/p/w500"
+  static let backdropURL = "https://image.tmdb.org/t/p/w780"
 }
